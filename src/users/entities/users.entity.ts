@@ -10,6 +10,9 @@ export class User {
   @Column({ nullable: false })
   name: string;
 
+  @Column({ nullable: false })
+  email: string;
+
   @Column({
     type: 'enum',
     enum: Role,

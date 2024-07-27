@@ -2,6 +2,7 @@ import { Borrowing } from '../../../src/borrowings/entities/borrowing.entity';
 import {
   Column,
   Entity,
+  Index,
   ManyToOne,
   OneToMany,
   PrimaryGeneratedColumn,
@@ -17,6 +18,7 @@ export class Book {
   @Column({ nullable: false })
   title: string;
 
+  @Index({ unique: true })
   @Column({ nullable: false })
   isbn: string;
 

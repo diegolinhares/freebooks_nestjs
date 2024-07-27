@@ -1,7 +1,14 @@
 import { User } from '../../../src/users/entities/users.entity';
 import { Book } from '../../../src/books/entities/books.entity';
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 
+@Index(['user', 'book'], { unique: true, where: 'returned_at IS NULL' })
 @Entity('borrowings')
 export class Borrowing {
   @PrimaryGeneratedColumn('uuid')
