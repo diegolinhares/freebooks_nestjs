@@ -1,7 +1,16 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Borrowing } from '../../../src/borrowings/entities/borrowing.entity';
+import {
+  Column,
+  Entity,
+  ManyToOne,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { Author } from './authors.entity';
+import { Genre } from './genres.entity';
 
 @Entity('books')
-export class Books {
+export class Book {
   @PrimaryGeneratedColumn()
   id: string;
 
@@ -16,4 +25,13 @@ export class Books {
 
   @Column({ nullable: false, default: 0 })
   availableCopies: number;
+
+  @ManyToOne(() => Author, (author) => author.books)
+  author: Author;
+
+  @ManyToOne(() => Genre, (genre) => genre.books)
+  genre: Genre;
+
+  @OneToMany(() => Borrowing, (borrowing) => borrowing.book)
+  borrowings: Borrowing[];
 }
