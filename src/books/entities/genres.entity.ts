@@ -3,7 +3,7 @@ import { Book } from './books.entity';
 
 @Entity('genres')
 export class Genre {
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn('uuid')
   id: string;
 
   @Column({ nullable: false })
